@@ -9,13 +9,10 @@ namespace WindowsAPI
     {
         static void Main()
         {
-            string options = "Select options:\n";
             string option1 = "Battery";
             string option2 = "Time";
 
-            options += $"1: { option1 }\n2: { option2 }\n";
-
-            Console.WriteLine(options);
+            Console.WriteLine($"Select options:\n1: { option1 }\n2: { option2 }\n");
 
             switch (Console.ReadLine())
             {
@@ -23,15 +20,14 @@ namespace WindowsAPI
                     var status = new BatteryStatus();
 
                     if (IUtil.GetBatteryStatus(ref status))
-                    {
-                        IUtil.MessageBox(new IntPtr(0), status.ToString(), option1, MessageBoxOptions.OkOnly);
-                    }
+                        IUtil.MessageBox(new IntPtr(0), status.ToString(), option1, MessageBoxButton.OkOnly);
+                    else
+                        IUtil.MessageBox(new IntPtr(0), "No information", option1, MessageBoxButton.OkOnly);
                     break;
                 case "2":
                     var time = new Time();
-                    ITime.GetLocalTime(ref time);
-                    //MySystemTime.FromDateTime(DateTime.Now.AddHours(2)); //Add two hours to the current time
-                    IUtil.MessageBox(new IntPtr(0), time.ToString(), option2, MessageBoxOptions.OkOnly);
+                    ITime.GetSystemTime(ref time);
+                    IUtil.MessageBox(new IntPtr(0), time.ToString(), option2, MessageBoxButton.OkOnly);
                     break;
                 default:
                     Main();

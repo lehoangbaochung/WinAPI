@@ -7,7 +7,7 @@ namespace WindowsAPI.Enumerables
     /// by a call to the MessageBox function.
     /// </summary>    
     [Flags]
-    public enum MessageBoxOptions : uint
+    public enum MessageBoxButton : uint
     {
         OkOnly = 0x000000,
         OkCancel = 0x000001,

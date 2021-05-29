@@ -5,7 +5,7 @@ using WindowsAPI.Enumerables;
 
 namespace WindowsAPI.Interfaces
 {
-    interface IWindow
+    interface IForm
     {
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         public static extern IntPtr FindWindow(string className, string windowName);
